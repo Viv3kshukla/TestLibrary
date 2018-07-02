@@ -4,13 +4,14 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 
-@SecureAnnotation
+@SecureAnnotation(unauthorizedOnAccessDenied=true)
 @org.springframework.stereotype.Controller
 public class SecondController extends Controller{
 	
 	public Result index() {
 		
-		System.out.println("something did happen ");
+		
+		System.out.println("7 . back inside index : ");
 		
 		return ok("hello users , welcome to this world .");
 	}

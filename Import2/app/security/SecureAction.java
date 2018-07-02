@@ -29,10 +29,14 @@ public class SecureAction extends Action<SecureAnnotation> {
     public F.Promise<Result> call(Http.Context ctx) throws Throwable {
     	try {
     		
+    		System.out.println("1 . ctx : "+ctx);
+    		
     		securityContextRepository.loadContext(ctx);
     		securityContextRepository.saveContext(SecurityContextHolder.getContext(), ctx);
     		
+    		
     		final F.Promise<Result> promise = delegate.call(ctx);
+    		System.out.println("6 . promise : " + promise);
     		return promise;
     	}
     	catch(AccessDeniedException e) {

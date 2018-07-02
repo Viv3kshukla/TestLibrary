@@ -53,7 +53,9 @@ public class HttpSessionSecurityContextRepository implements SecurityContextRepo
     public SecurityContext loadContext(Http.Context context) {
         final SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
         SecurityContextHolder.setContext(securityContext);
-
+        
+        System.out.println("2 . securityContext : "+ securityContext);
+        
         UserDetails user;
         if (isHttpContextSessionContainsSecurityUsername(context)) {
             final String username = getSecuritySessionUsername(context);
@@ -84,14 +86,18 @@ public class HttpSessionSecurityContextRepository implements SecurityContextRepo
     @Override
     public void saveContext(SecurityContext securityContext, Http.Context context) {
         final Authentication authentication = securityContext.getAuthentication();
+        
+        System.out.println("3 . authentication : "+ authentication);
+        
         if (authentication == null || !authentication.isAuthenticated()) {
         	
+        	System.out.println("4 . context.session() : " + context.session());
             context.session().remove(SECURITY_USERNAME_PARAM);
             
         }
         else {
             final String username = authentication.getName();
-           
+            System.out.println("5 . context.session() : " + context.session());
             context.session().put(SECURITY_USERNAME_PARAM, username);
         }
     }
