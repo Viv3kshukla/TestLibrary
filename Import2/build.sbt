@@ -16,7 +16,8 @@ libraryDependencies ++= Seq(
   "org.webjars" % "rjs" % "2.1.11-1-trireme" % "test",
   "org.webjars" % "squirejs" % "0.1.0" % "test",
   "com.pencil" % "pencil" % "0.0.1-SNAPSHOT",
-  "org.springframework.boot" % "spring-boot-starter-parent" % "2.0.3.RELEASE"
+  "org.springframework.boot" % "spring-boot-starter-parent" % "2.0.3.RELEASE",
+  "javax.inject" % "javax.inject" % "1"
 )
 
 // JsEngineKeys.engineType := JsEngineKeys.EngineType.Node

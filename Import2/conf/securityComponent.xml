@@ -109,7 +109,9 @@
         <property name="roleHierarchy" ref="roleHierarchy" />
     </bean>
     
-    
+    <bean class="controllers.AuthController">
+        <constructor-arg ref="authenticationManager" />
+    </bean>
     
     
     

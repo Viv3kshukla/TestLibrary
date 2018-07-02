@@ -29,11 +29,22 @@ public class SecureAction extends Action<SecureAnnotation> {
     public F.Promise<Result> call(Http.Context ctx) throws Throwable {
     	try {
     		
+    		System.out.println("0.  printing out the content of the session "+ ctx.session().get("security-username"));
+    		
+    		
+    		System.out.println("0.  printing out the content of the request "+ ctx.request());
+    		
     		System.out.println("1 . ctx : "+ctx);
     		
+    		System.out.println("1.5  .  securityContextRepository : " + securityContextRepository);
+    		
     		securityContextRepository.loadContext(ctx);
+    		
+    		System.out.println("4.5  . After loading securityContextRepository : " + securityContextRepository);
+    		
     		securityContextRepository.saveContext(SecurityContextHolder.getContext(), ctx);
     		
+    		System.out.println("4.8  .  Security Context Holder getContext() "+ SecurityContextHolder.getContext());
     		
     		final F.Promise<Result> promise = delegate.call(ctx);
     		System.out.println("6 . promise : " + promise);
@@ -44,11 +55,11 @@ public class SecureAction extends Action<SecureAnnotation> {
     		boolean redirect= (anonymous && !this.configuration.unauthorizedOnAccessDenied());
     		
     		if(redirect) {
-    			System.out.println("this is nothing ");
+    			System.out.println("8 . redirect : " + redirect);
     			F.Promise.pure("you are done for the day");
     		}
     		else {
-    			System.out.println("are you sure about that");
+    			System.out.println("9 . anonymous : " + anonymous);
     			F.Promise.pure("well , i am not sure about that");
     		}
     		

@@ -4,7 +4,7 @@
 		module="import2_2.11"
 		revision="2.3-SNAPSHOT"
 		status="integration"
-		publication="20180702084817"
+		publication="20180703003605"
 	>
 		<description>
 		Import2
@@ -45,5 +45,6 @@
 		<dependency org="org.webjars" name="squirejs" rev="0.1.0" conf="test->default(compile)"/>
 		<dependency org="com.pencil" name="pencil" rev="0.0.1-SNAPSHOT" conf="compile->default(compile)"/>
 		<dependency org="org.springframework.boot" name="spring-boot-starter-parent" rev="2.0.3.RELEASE" conf="compile->default(compile)"/>
+		<dependency org="javax.inject" name="javax.inject" rev="1" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>

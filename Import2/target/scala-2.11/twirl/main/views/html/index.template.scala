@@ -87,7 +87,7 @@ Seq[Any](format.raw/*1.1*/("""<!DOCTYPE html>
 }
               /*
                   -- GENERATED --
-                  DATE: Mon Jul 02 06:40:00 IST 2018
+                  DATE: Tue Jul 03 00:36:48 IST 2018
                   SOURCE: /home/vivek/STSProjectsImports/Import2/Import2/app/views/index.scala.html
                   HASH: a7be3a59ddfac1e5de8531260849c10e630f6412
                   MATRIX: 580->0|737->131|751->137|813->178|900->239|914->245|974->284|1031->315|1045->321|1105->361|1151->381|1165->387|1230->432

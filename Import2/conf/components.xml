@@ -12,7 +12,7 @@
 
 
 
-  <context:component-scan base-package="controllers,services,dao,config,com.pencil.application"/>
+  <context:component-scan base-package="controllers,models,services,dao,config,com.pencil.application"/>
 
 
 </beans>

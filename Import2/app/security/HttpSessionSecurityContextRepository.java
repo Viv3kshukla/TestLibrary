@@ -54,32 +54,59 @@ public class HttpSessionSecurityContextRepository implements SecurityContextRepo
         final SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
         SecurityContextHolder.setContext(securityContext);
         
+    
+        
         System.out.println("2 . securityContext : "+ securityContext);
+        
+        System.out.println("2.3  context : " + context);
+        
+        System.out.println("2.4   context.session() :  " + context.session());
         
         UserDetails user;
         if (isHttpContextSessionContainsSecurityUsername(context)) {
             final String username = getSecuritySessionUsername(context);
+            
+            System.out.println("9.3   username : "+username);
 
             try {
                 final boolean anonymous = SECURITY_ANONYMOUS_USERNAME.equals(username);
                 user = anonymous ? null: userService.loadUserByUsername(username);
+           
+                System.out.println("10. anonymous : "+anonymous);
+                
+                System.out.println("11. user : "+user);
+            
             }
             catch (UsernameNotFoundException e) {user = null;}
         }
         else {user = null;}
-
+        
+        
+        
         final Authentication authentication = (user == null)
                 ? createAnonymousAuthenticationToken()
                 : new UsernamePasswordAuthenticationToken(user, user.getPassword(), user.getAuthorities());
         
+        System.out.println("12.  authentication : "+authentication);
+                
         securityContext.setAuthentication(authentication);
         context.request().setUsername(authentication.getName());
+        
+        System.out.println("13.  authentication.getName() : "+authentication.getName()); 
+        
+
         context.args.put(SECURITY_EXPRESSION_OPERATIONS_KEY, securityExpressionOperationsSupplier.get());
 
+        
+        System.out.println("14 .  context : "+context);
+        
         return securityContext;
     }
 
     static AnonymousAuthenticationToken createAnonymousAuthenticationToken() {
+    	
+    	
+    	
         return new AnonymousAuthenticationToken(SECURITY_ANONYMOUS_KEY, SECURITY_ANONYMOUS_USERNAME, createAuthorityList(Roles.ROLE_ANONYMOUS));
     }
 
