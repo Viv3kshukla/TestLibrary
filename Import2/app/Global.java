@@ -13,7 +13,7 @@ public class Global extends GlobalSettings{
      @Override
      public void onStart(Application arg0) {
   	 ApplicationContext backendCtx = new AnnotationConfigApplicationContext(PencilApplication.class);
- 	 ctx = new ClassPathXmlApplicationContext(new String[] {"components.xml"}, backendCtx);
+ 	 ctx = new ClassPathXmlApplicationContext(new String[] {"components.xml","securityComponent.xml"}, backendCtx);
      }
     
      @Override

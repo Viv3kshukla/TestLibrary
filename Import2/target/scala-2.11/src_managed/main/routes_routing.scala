@@ -1,6 +1,6 @@
 // @SOURCE:/home/vivek/STSProjectsImports/Import2/Import2/conf/routes
-// @HASH:f08534222f27f10ab839f1ebeec1e650aaa3e8c2
-// @DATE:Mon Jul 02 06:47:48 IST 2018
+// @HASH:bf95cc2cbde6cea49c4798e25380a210085227ce
+// @DATE:Mon Jul 02 13:40:28 IST 2018
 
 
 import scala.language.reflectiveCalls
@@ -60,13 +60,20 @@ play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).g
 HandlerDef(this.getClass.getClassLoader, "", "controllers.FirstController", "welcome", Nil,"GET", """""", Routes.prefix + """welcome"""))
         
 
-// @LINE:13
-private[this] lazy val controllers_Assets_versioned4_route = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("assets/"),DynamicPart("file", """.+""",false))))
-private[this] lazy val controllers_Assets_versioned4_invoker = createInvoker(
+// @LINE:12
+private[this] lazy val controllers_SecondController_index4_route = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("secureCheck"))))
+private[this] lazy val controllers_SecondController_index4_invoker = createInvoker(
+play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).getControllerInstance(classOf[controllers.SecondController]).index(),
+HandlerDef(this.getClass.getClassLoader, "", "controllers.SecondController", "index", Nil,"GET", """""", Routes.prefix + """secureCheck"""))
+        
+
+// @LINE:16
+private[this] lazy val controllers_Assets_versioned5_route = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("assets/"),DynamicPart("file", """.+""",false))))
+private[this] lazy val controllers_Assets_versioned5_invoker = createInvoker(
 controllers.Assets.versioned(fakeValue[String], fakeValue[Asset]),
 HandlerDef(this.getClass.getClassLoader, "", "controllers.Assets", "versioned", Seq(classOf[String], classOf[Asset]),"GET", """ Use `Assets.versioned` to enable Play 2.3's Asset Fingerprinting""", Routes.prefix + """assets/$file<.+>"""))
         
-def documentation = List(("""GET""", prefix,"""controllers.Application.index"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """sum/$password<[^/]+>""","""controllers.SumController.socket(password:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """hello""","""@controllers.FirstController@.verboseAnnotationIndex()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """welcome""","""@controllers.FirstController@.welcome()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.versioned(path:String = "/public", file:Asset)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
+def documentation = List(("""GET""", prefix,"""controllers.Application.index"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """sum/$password<[^/]+>""","""controllers.SumController.socket(password:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """hello""","""@controllers.FirstController@.verboseAnnotationIndex()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """welcome""","""@controllers.FirstController@.welcome()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """secureCheck""","""@controllers.SecondController@.index()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.versioned(path:String = "/public", file:Asset)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
   case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
   case l => s ++ l.asInstanceOf[List[(String,String,String)]]
 }}
@@ -106,10 +113,18 @@ case controllers_FirstController_welcome3_route(params) => {
 }
         
 
-// @LINE:13
-case controllers_Assets_versioned4_route(params) => {
+// @LINE:12
+case controllers_SecondController_index4_route(params) => {
+   call { 
+        controllers_SecondController_index4_invoker.call(play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).getControllerInstance(classOf[controllers.SecondController]).index())
+   }
+}
+        
+
+// @LINE:16
+case controllers_Assets_versioned5_route(params) => {
    call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
-        controllers_Assets_versioned4_invoker.call(controllers.Assets.versioned(path, file))
+        controllers_Assets_versioned5_invoker.call(controllers.Assets.versioned(path, file))
    }
 }
         

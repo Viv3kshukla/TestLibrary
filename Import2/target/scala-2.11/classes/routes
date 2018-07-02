@@ -7,6 +7,9 @@ GET        /sum/:password       controllers.SumController.socket(password)
 GET        /hello               @controllers.FirstController.verboseAnnotationIndex()
 
 GET        /welcome             @controllers.FirstController.welcome()
+   
+
+GET       /secureCheck          @controllers.SecondController.index()
 
 
 # Use `Assets.versioned` to enable Play 2.3's Asset Fingerprinting
