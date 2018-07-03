@@ -50,11 +50,13 @@ public class HttpSessionSecurityContextRepository implements SecurityContextRepo
     
     @Override
     public SecurityContext loadContext(Http.Context context) {
+    	
         final SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
         SecurityContextHolder.setContext(securityContext);
-  
+        
         System.out.println("6.securityContext : " + securityContext);
         System.out.println("7.context : " + context);        
+        System.out.println("30.contextKey : "+context.session().get(SECURITY_USERNAME_PARAM));
         UserDetails user;
         if (isHttpContextSessionContainsSecurityUsername(context)) {
             final String username = getSecuritySessionUsername(context);

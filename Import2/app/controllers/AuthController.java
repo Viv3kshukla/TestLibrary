@@ -60,7 +60,7 @@ public class AuthController extends Controller	{
         try {
             final Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
             System.out.println("13.authentication : "+authentication);
-            
+            session().put(HttpSessionSecurityContextRepository.SECURITY_USERNAME_PARAM,username);
             SecurityContextHolder.getContext().setAuthentication(authentication);
     		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     		System.out.println("14.principal : "+ principal);
@@ -113,7 +113,7 @@ public class AuthController extends Controller	{
 
         SecurityContextHolder.getContext().setAuthentication(null);
         SecurityContextHolder.clearContext();
-        
+        session().clear();
    
         return redirect(routes.AuthController.showLogin());
     }
