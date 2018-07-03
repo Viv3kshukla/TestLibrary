@@ -12,15 +12,30 @@ GET        /welcome             @controllers.FirstController.welcome()
 GET       /secureCheck          @controllers.SecondController.index()
 
 
-GET      /formCheck             @controllers.AuthController.showLogin()
-
-GET      /indexCheck            @controllers.AuthController.index()
+GET       /formCheck             @controllers.AuthController.showLogin()
 
 
-GET      /logout                @controllers.AuthController.logout()
 
 
-GET      /greet                 @controllers.AuthController.serviceCheck() 
+GET       /welcomePage          @controllers.AuthController.welcomePage()
+
+
+
+GET       /indexCheck            @controllers.AuthController.index()
+
+
+GET       /logout                @controllers.AuthController.logout()
+
+
+GET       /greet                 @controllers.AuthController.serviceCheck() 
+
+
+GET       /anyway                @controllers.AuthController.anywayCheck()
+
+
+GET      /publicAccessCheck     @controllers.AuthController.publicAccessCheck()
+
+
 
 
 # Use `Assets.versioned` to enable Play 2.3's Asset Fingerprinting

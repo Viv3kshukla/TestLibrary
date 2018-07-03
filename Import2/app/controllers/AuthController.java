@@ -9,6 +9,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.pencil.application.services.HelloService;
 
@@ -21,6 +22,8 @@ import play.mvc.Result;
 import security.HttpSessionSecurityContextRepository;
 import views.html.*;
 
+
+@SecureAnnotation(unauthorizedOnAccessDenied=false)
 public class AuthController extends Controller	{
 
 	
@@ -78,6 +81,9 @@ public class AuthController extends Controller	{
             System.out.println("i just wanted to see authentication : "+authentication);
             
             SecurityContextHolder.getContext().setAuthentication(authentication);
+            
+            return redirect(routes.AuthController.welcomePage());
+            
         }
         catch (AuthenticationException e) {
             HttpSessionSecurityContextRepository.setAuthenticationFailure();
@@ -85,7 +91,33 @@ public class AuthController extends Controller	{
             return badRequest(create.render());
         }
 		
-		return ok("this is going to be awesome");
+	}
+	
+	
+	public Result welcomePage() {
+		
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		System.out.println("the principal is "+ principal);
+		
+		
+		if (principal instanceof UserDetails) {
+			String username = ((UserDetails)principal).getUsername();
+			System.out.println("\n\n\n Hi users "+username+"\n\n\n");
+		
+		}  
+		else {
+			String username = principal.toString();
+			System.out.println("\n\n\n Do you know i am not a user  "+username+"\n\n\n");
+			
+			return ok("get authenticated first "+principal);
+			
+		}
+		
+		
+		return ok("Welcome "+principal);
+		
+		
 	}
 	
 	
@@ -94,6 +126,17 @@ public class AuthController extends Controller	{
 		return ok(service.welcome());
 		
 	}
+	
+	
+	public Result anywayCheck() {
+		return ok(service.anyway());
+	}
+	
+	
+	public Result publicAccessCheck() {
+		return ok(service.publicAccess());
+	}
+	
 	
 	
 	@PreAuthorize("hasRole('ROLE_USER')")

@@ -1,18 +1,18 @@
-2018-07-03 11:44:12,461 - [INFO] - from play in pool-4-thread-5 
+2018-07-03 12:35:11,567 - [INFO] - from play in pool-4-thread-7 
 Listening for HTTP on /0:0:0:0:0:0:0:0:9000
 
-2018-07-03 11:44:22,443 - [INFO] - from play in play-internal-execution-context-1 
+2018-07-03 12:35:27,498 - [INFO] - from play in play-internal-execution-context-1 
 Application started (Dev)
 
-2018-07-03 11:44:23,012 - [ERROR] - from play in play-akka.actor.default-dispatcher-2 
-Cannot invoke the action, eventually got an error: org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type 'controllers.AuthController' available: expected single matching bean but found 2: authController,controllers.AuthController#0
+2018-07-03 12:37:07,715 - [ERROR] - from play in play-akka.actor.default-dispatcher-2 
+Cannot invoke the action, eventually got an error: java.lang.NullPointerException
 
-2018-07-03 11:44:23,023 - [ERROR] - from application in play-akka.actor.default-dispatcher-2 
+2018-07-03 12:37:07,726 - [ERROR] - from application in play-akka.actor.default-dispatcher-2 
 
 
-! @78ej8hbkg - Internal server error, for (GET) [/greet] ->
+! @78ejffd7o - Internal server error, for (GET) [/logout] ->
 
-play.api.Application$$anon$1: Execution exception[[NoUniqueBeanDefinitionException: No qualifying bean of type 'controllers.AuthController' available: expected single matching bean but found 2: authController,controllers.AuthController#0]]
+play.api.Application$$anon$1: Execution exception[[NullPointerException: null]]
 	at play.api.Application$class.handleError(Application.scala:296)
 	at play.api.DefaultApplication.handleError(Application.scala:402)
 	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$3$$anonfun$applyOrElse$4.apply(PlayDefaultUpstreamHandler.scala:320)
@@ -35,19 +35,7 @@ play.api.Application$$anon$1: Execution exception[[NoUniqueBeanDefinitionExcepti
 	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
 	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
 	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
-Caused by: org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type 'controllers.AuthController' available: expected single matching bean but found 2: authController,controllers.AuthController#0
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFactory.java:1039)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:339)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:334)
-	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1107)
-	at Global.getControllerInstance(Global.java:21)
-	at play.core.j.JavaGlobalSettingsAdapter.getControllerInstance(JavaGlobalSettingsAdapter.scala:50)
-	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$9$$anonfun$apply$35.apply(routes_routing.scala:179)
-	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$9$$anonfun$apply$35.apply(routes_routing.scala:179)
-	at play.core.Router$HandlerInvokerFactory$$anon$4.resultCall(Router.scala:264)
-	at play.core.Router$HandlerInvokerFactory$JavaActionInvokerFactory$$anon$15$$anon$1.invocation(Router.scala:255)
-	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:55)
-	at play.GlobalSettings$1.call(GlobalSettings.java:67)
+Caused by: java.lang.NullPointerException: null
 	at play.core.j.JavaAction$$anonfun$11.apply(JavaAction.scala:82)
 	at play.core.j.JavaAction$$anonfun$11.apply(JavaAction.scala:82)
 	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
@@ -77,6 +65,15 @@ Caused by: org.springframework.beans.factory.NoUniqueBeanDefinitionException: No
 	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
 	... 6 common frames omitted
 
-2018-07-03 11:44:54,282 - [INFO] - from play in play-internal-execution-context-1 
+2018-07-03 12:37:27,320 - [WARN] - from play in play-akka.actor.default-dispatcher-7 
+You are using status code '400' with flashing, which should only be used with a redirect status!
+
+2018-07-03 12:37:31,276 - [WARN] - from play in play-akka.actor.default-dispatcher-7 
+You are using status code '400' with flashing, which should only be used with a redirect status!
+
+2018-07-03 12:40:56,369 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2018-07-03 12:42:55,918 - [INFO] - from play in play-internal-execution-context-1 
 Application started (Dev)
 
