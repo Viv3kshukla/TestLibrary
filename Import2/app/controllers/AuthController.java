@@ -1,5 +1,6 @@
 package controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationTrustResolver;
@@ -9,6 +10,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import com.pencil.application.services.HelloService;
+
 import models.AuthToken;
 
 import javax.inject.Inject;
@@ -17,10 +20,12 @@ import play.mvc.Http.Context;
 import play.mvc.Result;
 import security.HttpSessionSecurityContextRepository;
 import views.html.*;
+
 public class AuthController extends Controller	{
 
 	
-
+	@Autowired
+	private HelloService service;
 	
 	
 	private final AuthenticationManager authenticationManager;
@@ -82,6 +87,14 @@ public class AuthController extends Controller	{
 		
 		return ok("this is going to be awesome");
 	}
+	
+	
+	public Result serviceCheck() {
+		
+		return ok(service.welcome());
+		
+	}
+	
 	
 	@PreAuthorize("hasRole('ROLE_USER')")
     public Result logout() {

@@ -43,7 +43,7 @@ Seq[Any](format.raw/*1.27*/("""
 }
               /*
                   -- GENERATED --
-                  DATE: Tue Jul 03 00:36:48 IST 2018
+                  DATE: Tue Jul 03 11:38:12 IST 2018
                   SOURCE: /home/vivek/STSProjectsImports/Import2/Import2/app/views/layout.scala.html
                   HASH: 4b1356c33fbaffc45e681f7128b36cbec1223ed5
                   MATRIX: 511->1|624->26|653->29|701->51|726->56|779->84|802->88|833->92

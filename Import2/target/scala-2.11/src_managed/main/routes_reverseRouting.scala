@@ -1,6 +1,6 @@
 // @SOURCE:/home/vivek/STSProjectsImports/Import2/Import2/conf/routes
-// @HASH:ee399c2ee86ddd3b59e39e268b5348473eee8706
-// @DATE:Tue Jul 03 02:11:22 IST 2018
+// @HASH:70bf37ebc9b4c893db799059d7f39dcefefbae18
+// @DATE:Tue Jul 03 11:41:55 IST 2018
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -14,7 +14,8 @@ import _root_.controllers.Assets.Asset
 import Router.queryString
 
 
-// @LINE:24
+// @LINE:27
+// @LINE:23
 // @LINE:20
 // @LINE:17
 // @LINE:15
@@ -25,11 +26,11 @@ import Router.queryString
 // @LINE:2
 package controllers {
 
-// @LINE:24
+// @LINE:27
 class ReverseAssets {
 
 
-// @LINE:24
+// @LINE:27
 def versioned(file:Asset): Call = {
    implicit val _rrc = new ReverseRouteContext(Map(("path", "/public")))
    Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[PathBindable[Asset]].unbind("file", file))
@@ -81,11 +82,19 @@ def index(): Call = {
 }
                           
 
+// @LINE:23
 // @LINE:20
 // @LINE:17
 // @LINE:15
 class ReverseAuthController {
 
+
+// @LINE:23
+def serviceCheck(): Call = {
+   import ReverseRouteContext.empty
+   Call("GET", _prefix + { _defaultPrefix } + "greet")
+}
+                        
 
 // @LINE:20
 def logout(): Call = {
@@ -136,7 +145,8 @@ def verboseAnnotationIndex(): Call = {
                   
 
 
-// @LINE:24
+// @LINE:27
+// @LINE:23
 // @LINE:20
 // @LINE:17
 // @LINE:15
@@ -148,11 +158,11 @@ def verboseAnnotationIndex(): Call = {
 package controllers.javascript {
 import ReverseRouteContext.empty
 
-// @LINE:24
+// @LINE:27
 class ReverseAssets {
 
 
-// @LINE:24
+// @LINE:27
 def versioned : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Assets.versioned",
    """
@@ -220,11 +230,23 @@ def index : JavascriptReverseRoute = JavascriptReverseRoute(
 }
               
 
+// @LINE:23
 // @LINE:20
 // @LINE:17
 // @LINE:15
 class ReverseAuthController {
 
+
+// @LINE:23
+def serviceCheck : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.AuthController.serviceCheck",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "greet"})
+      }
+   """
+)
+                        
 
 // @LINE:20
 def logout : JavascriptReverseRoute = JavascriptReverseRoute(
@@ -295,7 +317,8 @@ def verboseAnnotationIndex : JavascriptReverseRoute = JavascriptReverseRoute(
         
 
 
-// @LINE:24
+// @LINE:27
+// @LINE:23
 // @LINE:20
 // @LINE:17
 // @LINE:15
@@ -307,11 +330,11 @@ def verboseAnnotationIndex : JavascriptReverseRoute = JavascriptReverseRoute(
 package controllers.ref {
 
 
-// @LINE:24
+// @LINE:27
 class ReverseAssets {
 
 
-// @LINE:24
+// @LINE:27
 def versioned(path:String, file:Asset): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Assets.versioned(path, file), HandlerDef(this.getClass.getClassLoader, "", "controllers.Assets", "versioned", Seq(classOf[String], classOf[Asset]), "GET", """ Use `Assets.versioned` to enable Play 2.3's Asset Fingerprinting""", _prefix + """assets/$file<.+>""")
 )
@@ -359,11 +382,18 @@ def index(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 }
                           
 
+// @LINE:23
 // @LINE:20
 // @LINE:17
 // @LINE:15
 class ReverseAuthController {
 
+
+// @LINE:23
+def serviceCheck(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).getControllerInstance(classOf[controllers.AuthController]).serviceCheck(), HandlerDef(this.getClass.getClassLoader, "", "controllers.AuthController", "serviceCheck", Seq(), "GET", """""", _prefix + """greet""")
+)
+                      
 
 // @LINE:20
 def logout(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
