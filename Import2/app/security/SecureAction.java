@@ -27,9 +27,6 @@ public class SecureAction extends Action<SecureAnnotation> {
 //        this.redirectRoute = redirectRoute;
 	}
 	
-	
-	
-	
     public F.Promise<Result> call(Http.Context ctx) throws Throwable {
     	
     	System.out.println("\n\n ----- back at SecureAction ----- \n\n");

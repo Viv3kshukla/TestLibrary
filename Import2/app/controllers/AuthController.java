@@ -40,8 +40,6 @@ public class AuthController extends Controller	{
 		this.authenticationManager = authenticationManager;
 	}
 	
-
-	
 	public Result showLogin() {
 		
 		System.out.println("14. isAnonymous : "+ authenticationTrustResolver.isAnonymous(SecurityContextHolder.getContext().getAuthentication()));
@@ -94,24 +92,19 @@ public class AuthController extends Controller	{
 		return ok("Welcome "+principal);
 	}
 	
-	
 	public Result serviceCheck() {
 		
 		return ok(service.welcome());
 		
 	}
 	
-	
 	public Result anywayCheck() {
 		return ok(service.anyway());
 	}
 	
-	
 	public Result publicAccessCheck() {
 		return ok(service.publicAccess());
 	}
-	
-	
 	
 	@PreAuthorize("hasRole('ROLE_USER')")
     public Result logout() {
