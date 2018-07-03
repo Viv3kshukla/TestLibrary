@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.pencil.application.services.HelloService;
 
@@ -22,14 +23,15 @@ import play.mvc.Result;
 import security.HttpSessionSecurityContextRepository;
 import views.html.*;
 
-
-@SecureAnnotation(unauthorizedOnAccessDenied=false)
+@SecureAnnotation(unauthorizedOnAccessDenied=true)
 public class AuthController extends Controller	{
 
 	
 	@Autowired
 	private HelloService service;
 	
+//	@Autowired
+//	private BCryptPasswordEncoder passwordEncoder;
 	
 	private final AuthenticationManager authenticationManager;
     private AuthenticationTrustResolver authenticationTrustResolver = new AuthenticationTrustResolverImpl();
@@ -42,52 +44,32 @@ public class AuthController extends Controller	{
 	
 	public Result showLogin() {
 		
-		System.out.println("this is really something "+ authenticationTrustResolver.isAnonymous(SecurityContextHolder.getContext().getAuthentication()));
+		System.out.println("14. isAnonymous : "+ authenticationTrustResolver.isAnonymous(SecurityContextHolder.getContext().getAuthentication()));
+		System.out.println("15. SecurityContextHolder.getContext() : "+SecurityContextHolder.getContext().getAuthentication());
 		
-		System.out.println("check this out "+SecurityContextHolder.getContext().getAuthentication());
-		
-		if(authenticationTrustResolver.isAnonymous(SecurityContextHolder.getContext().getAuthentication())) {
-			
-			System.out.println("i doubt anything will happen ");
-			
+		if(authenticationTrustResolver.isAnonymous(SecurityContextHolder.getContext().getAuthentication())) {	
 			return ok(create.render());
 		}
-		
-		
-		return ok("common are you  kidding me . i mean this is very tough . ");
+		return ok("Not Anonymous");
 	}
 	
-	
 	public Result index() {
-		
-		
-		
-		
-		System.out.println("i doubt that captain "+request());
+
 		String username=request().getQueryString("username");
 		String password=request().getQueryString("password");		
-
-
-
-		System.out.println("the thing is that i also want to check "+Context.current());
-		System.out.println("the session is "+session());
-		System.out.println("and the password happens to be "+password);
-		System.out.println("the name of this  country is "+username);
-		
+		System.out.println("12.session : "+session());
 		
         try {
             final Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-            
-            System.out.println("i just wanted to see authentication : "+authentication);
+            System.out.println("13.authentication : "+authentication);
             
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            
+    		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    		System.out.println("14.principal : "+ principal);
             return redirect(routes.AuthController.welcomePage());
-            
         }
         catch (AuthenticationException e) {
             HttpSessionSecurityContextRepository.setAuthenticationFailure();
-
             return badRequest(create.render());
         }
 		
@@ -95,29 +77,21 @@ public class AuthController extends Controller	{
 	
 	
 	public Result welcomePage() {
-		
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		
-		System.out.println("the principal is "+ principal);
-		
+		System.out.println("15.principal : "+ principal);
 		
 		if (principal instanceof UserDetails) {
 			String username = ((UserDetails)principal).getUsername();
-			System.out.println("\n\n\n Hi users "+username+"\n\n\n");
-		
+			System.out.println("16.username : "+username);
 		}  
 		else {
 			String username = principal.toString();
-			System.out.println("\n\n\n Do you know i am not a user  "+username+"\n\n\n");
+			System.out.println("17.username : "+username);
 			
 			return ok("get authenticated first "+principal);
 			
 		}
-		
-		
 		return ok("Welcome "+principal);
-		
-		
 	}
 	
 	
@@ -142,13 +116,12 @@ public class AuthController extends Controller	{
 	@PreAuthorize("hasRole('ROLE_USER')")
     public Result logout() {
 
-    	System.out.println("this is inside logout and i just wanted to see what's in it : "+SecurityContextHolder.getContext());
-    	
+    	System.out.println("18.SecurityContextHolder.getAuthentication : "+SecurityContextHolder.getContext());
+
         SecurityContextHolder.getContext().setAuthentication(null);
         SecurityContextHolder.clearContext();
         
-        System.out.println("now printing again to see what's inside SecurityContextHolder "+SecurityContextHolder.getContext());
-        
+   
         return redirect(routes.AuthController.showLogin());
     }
 

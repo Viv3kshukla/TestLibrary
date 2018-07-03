@@ -22,32 +22,35 @@ public class SecureAction extends Action<SecureAnnotation> {
     private AuthenticationTrustResolver authenticationTrustResolver = new AuthenticationTrustResolverImpl();
 
 	public SecureAction(final HttpSessionSecurityContextRepository securityContextRepository) {
+		
 		this.securityContextRepository = securityContextRepository;
 //        this.redirectRoute = redirectRoute;
 	}
 	
+	
+	
+	
     public F.Promise<Result> call(Http.Context ctx) throws Throwable {
+    	
+    	System.out.println("\n\n ----- back at SecureAction ----- \n\n");
+    	
+		try {
+			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			System.out.println("19.Principal : "+principal);
+		}
+		catch(Exception e) {
+			System.out.println("20.Error : "+e);
+		}
+    	
     	try {
-    		
-    		System.out.println("0.  printing out the content of the session "+ ctx.session().get("security-username"));
-    		
-    		
-    		System.out.println("0.  printing out the content of the request "+ ctx.request());
-    		
-    		System.out.println("1 . ctx : "+ctx);
-    		
-    		System.out.println("1.5  .  securityContextRepository : " + securityContextRepository);
-    		
+    		System.out.println("1.ctx : "+ctx);
+    		System.out.println("2.securityContextRepository : " + securityContextRepository);
     		securityContextRepository.loadContext(ctx);
-    		
-    		System.out.println("4.5  . After loading securityContextRepository : " + securityContextRepository);
-    		
+    		System.out.println("3.securityContextRepository : " + securityContextRepository);
     		securityContextRepository.saveContext(SecurityContextHolder.getContext(), ctx);
-    		
-    		System.out.println("4.8  .  Security Context Holder getContext() "+ SecurityContextHolder.getContext());
-    		
+    		System.out.println("4.securityContextRepository : " + securityContextRepository);
+    		System.out.println("5.SecurityContextHolder.getContext() : "+ SecurityContextHolder.getContext());
     		final F.Promise<Result> promise = delegate.call(ctx);
-    		System.out.println("6 . promise : " + promise);
     		return promise;
     	}
     	catch(AccessDeniedException e) {
@@ -55,12 +58,10 @@ public class SecureAction extends Action<SecureAnnotation> {
     		boolean redirect= (anonymous && !this.configuration.unauthorizedOnAccessDenied());
     		
     		if(redirect) {
-    			System.out.println("8 . redirect : " + redirect);
-    			F.Promise.pure("you are done for the day");
+    			F.Promise.pure("Redirected from SecureAction , redirect : "+redirect);
     		}
     		else {
-    			System.out.println("9 . anonymous : " + anonymous);
-    			F.Promise.pure("well , i am not sure about that");
+    			F.Promise.pure("Redirected form SecureAction , anonymous : "+anonymous);
     		}
     		
     		
