@@ -108,12 +108,19 @@ public class AuthController extends Controller	{
 	
 	@PreAuthorize("hasRole('ROLE_USER')")
     public Result logout() {
-
-    	System.out.println("18.SecurityContextHolder.getAuthentication : "+SecurityContextHolder.getContext());
-
-        SecurityContextHolder.getContext().setAuthentication(null);
-        SecurityContextHolder.clearContext();
-        session().clear();
+		
+		try {
+			System.out.println("35.Sample Running Check");
+	    	System.out.println("18.SecurityContextHolder.getAuthentication : "+SecurityContextHolder.getContext());
+	        SecurityContextHolder.getContext().setAuthentication(null);
+	        SecurityContextHolder.clearContext();
+	        session().clear();
+		}
+		catch(Exception e) {
+			System.out.println("I have just known that you could have done it . ");
+			
+		}
+    	
    
         return redirect(routes.AuthController.showLogin());
     }

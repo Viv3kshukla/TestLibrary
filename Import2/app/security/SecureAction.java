@@ -7,6 +7,7 @@ import org.springframework.security.authentication.AuthenticationTrustResolverIm
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import controllers.SecureAnnotation;
+import controllers.routes;
 import play.api.mvc.Call;
 import play.libs.F;
 import play.mvc.Action;
@@ -43,27 +44,31 @@ public class SecureAction extends Action<SecureAnnotation> {
     		System.out.println("1.ctx : "+ctx);
     		System.out.println("2.securityContextRepository : " + securityContextRepository);
     		securityContextRepository.loadContext(ctx);
+    		
     		System.out.println("3.securityContextRepository : " + securityContextRepository);
     		securityContextRepository.saveContext(SecurityContextHolder.getContext(), ctx);
     		System.out.println("4.securityContextRepository : " + securityContextRepository);
     		System.out.println("5.SecurityContextHolder.getContext() : "+ SecurityContextHolder.getContext());
+    		
+    		System.out.println("the value of ctx is not null or is it ? let's check "+ctx);
+
     		final F.Promise<Result> promise = delegate.call(ctx);
     		return promise;
+    		
+    		
     	}
     	catch(AccessDeniedException e) {
     		boolean anonymous =authenticationTrustResolver.isAnonymous(SecurityContextHolder.getContext().getAuthentication());
     		boolean redirect= (anonymous && !this.configuration.unauthorizedOnAccessDenied());
+    		System.out.println("25.AccessDeniedException : "+e);
+//    		
+//    		final Result promise = redirect(routes.AuthController.showLogin());
     		
-    		if(redirect) {
-    			F.Promise.pure("Redirected from SecureAction , redirect : "+redirect);
-    		}
-    		else {
-    			F.Promise.pure("Redirected form SecureAction , anonymous : "+anonymous);
-    		}
+    		final Result promise =unauthorized("You are not authorized ");
     		
+    		return F.Promise.pure(promise);
     		
     	}
-		return null;
        
     }
 }
