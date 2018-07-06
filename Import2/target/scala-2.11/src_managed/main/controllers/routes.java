@@ -1,6 +1,6 @@
 // @SOURCE:/home/vivek/STSProjectsImports/Import2/Import2/conf/routes
-// @HASH:1aee9635f523ac8524d7ca0f62b67f70c366c1ae
-// @DATE:Tue Jul 03 12:19:53 IST 2018
+// @HASH:80aeb6b78ad71fa3639d2f60adf63f94c5384540
+// @DATE:Thu Jul 05 13:34:38 IST 2018
 
 package controllers;
 

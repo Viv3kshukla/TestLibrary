@@ -93,8 +93,17 @@
         </constructor-arg>
     </bean>
     
+    
+    <bean id="sessionTimeoutAction"  class="security.SessionTimeoutAction">
+        <constructor-arg ref="clock" />
+        <constructor-arg value="1" />
+        <constructor-arg value="#{T(controllers.routes).AuthController.showLogin()}" />
+    </bean>
+    
+    
     <bean class="security.SecureAction">
         <constructor-arg ref="httpSessionSecurityContextRepository" />
+        <constructor-arg value="#{T(controllers.routes).AuthController.showLogin()}" />
     </bean>
     
     

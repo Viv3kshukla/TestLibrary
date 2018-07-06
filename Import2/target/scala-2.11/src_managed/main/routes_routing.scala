@@ -1,6 +1,6 @@
 // @SOURCE:/home/vivek/STSProjectsImports/Import2/Import2/conf/routes
-// @HASH:1aee9635f523ac8524d7ca0f62b67f70c366c1ae
-// @DATE:Tue Jul 03 12:19:53 IST 2018
+// @HASH:80aeb6b78ad71fa3639d2f60adf63f94c5384540
+// @DATE:Thu Jul 05 13:34:38 IST 2018
 
 
 import scala.language.reflectiveCalls
@@ -74,49 +74,49 @@ play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).g
 HandlerDef(this.getClass.getClassLoader, "", "controllers.AuthController", "showLogin", Nil,"GET", """""", Routes.prefix + """formCheck"""))
         
 
-// @LINE:20
+// @LINE:18
 private[this] lazy val controllers_AuthController_welcomePage6_route = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("welcomePage"))))
 private[this] lazy val controllers_AuthController_welcomePage6_invoker = createInvoker(
 play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).getControllerInstance(classOf[controllers.AuthController]).welcomePage(),
 HandlerDef(this.getClass.getClassLoader, "", "controllers.AuthController", "welcomePage", Nil,"GET", """""", Routes.prefix + """welcomePage"""))
         
 
-// @LINE:24
+// @LINE:22
 private[this] lazy val controllers_AuthController_index7_route = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("indexCheck"))))
 private[this] lazy val controllers_AuthController_index7_invoker = createInvoker(
 play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).getControllerInstance(classOf[controllers.AuthController]).index(),
 HandlerDef(this.getClass.getClassLoader, "", "controllers.AuthController", "index", Nil,"GET", """""", Routes.prefix + """indexCheck"""))
         
 
-// @LINE:27
+// @LINE:25
 private[this] lazy val controllers_AuthController_logout8_route = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("logout"))))
 private[this] lazy val controllers_AuthController_logout8_invoker = createInvoker(
 play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).getControllerInstance(classOf[controllers.AuthController]).logout(),
 HandlerDef(this.getClass.getClassLoader, "", "controllers.AuthController", "logout", Nil,"GET", """""", Routes.prefix + """logout"""))
         
 
-// @LINE:30
+// @LINE:28
 private[this] lazy val controllers_AuthController_serviceCheck9_route = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("greet"))))
 private[this] lazy val controllers_AuthController_serviceCheck9_invoker = createInvoker(
 play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).getControllerInstance(classOf[controllers.AuthController]).serviceCheck(),
 HandlerDef(this.getClass.getClassLoader, "", "controllers.AuthController", "serviceCheck", Nil,"GET", """""", Routes.prefix + """greet"""))
         
 
-// @LINE:33
+// @LINE:31
 private[this] lazy val controllers_AuthController_anywayCheck10_route = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("anyway"))))
 private[this] lazy val controllers_AuthController_anywayCheck10_invoker = createInvoker(
 play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).getControllerInstance(classOf[controllers.AuthController]).anywayCheck(),
 HandlerDef(this.getClass.getClassLoader, "", "controllers.AuthController", "anywayCheck", Nil,"GET", """""", Routes.prefix + """anyway"""))
         
 
-// @LINE:36
+// @LINE:34
 private[this] lazy val controllers_AuthController_publicAccessCheck11_route = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("publicAccessCheck"))))
 private[this] lazy val controllers_AuthController_publicAccessCheck11_invoker = createInvoker(
 play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).getControllerInstance(classOf[controllers.AuthController]).publicAccessCheck(),
 HandlerDef(this.getClass.getClassLoader, "", "controllers.AuthController", "publicAccessCheck", Nil,"GET", """""", Routes.prefix + """publicAccessCheck"""))
         
 
-// @LINE:42
+// @LINE:40
 private[this] lazy val controllers_Assets_versioned12_route = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("assets/"),DynamicPart("file", """.+""",false))))
 private[this] lazy val controllers_Assets_versioned12_invoker = createInvoker(
 controllers.Assets.versioned(fakeValue[String], fakeValue[Asset]),
@@ -178,7 +178,7 @@ case controllers_AuthController_showLogin5_route(params) => {
 }
         
 
-// @LINE:20
+// @LINE:18
 case controllers_AuthController_welcomePage6_route(params) => {
    call { 
         controllers_AuthController_welcomePage6_invoker.call(play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).getControllerInstance(classOf[controllers.AuthController]).welcomePage())
@@ -186,7 +186,7 @@ case controllers_AuthController_welcomePage6_route(params) => {
 }
         
 
-// @LINE:24
+// @LINE:22
 case controllers_AuthController_index7_route(params) => {
    call { 
         controllers_AuthController_index7_invoker.call(play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).getControllerInstance(classOf[controllers.AuthController]).index())
@@ -194,7 +194,7 @@ case controllers_AuthController_index7_route(params) => {
 }
         
 
-// @LINE:27
+// @LINE:25
 case controllers_AuthController_logout8_route(params) => {
    call { 
         controllers_AuthController_logout8_invoker.call(play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).getControllerInstance(classOf[controllers.AuthController]).logout())
@@ -202,7 +202,7 @@ case controllers_AuthController_logout8_route(params) => {
 }
         
 
-// @LINE:30
+// @LINE:28
 case controllers_AuthController_serviceCheck9_route(params) => {
    call { 
         controllers_AuthController_serviceCheck9_invoker.call(play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).getControllerInstance(classOf[controllers.AuthController]).serviceCheck())
@@ -210,7 +210,7 @@ case controllers_AuthController_serviceCheck9_route(params) => {
 }
         
 
-// @LINE:33
+// @LINE:31
 case controllers_AuthController_anywayCheck10_route(params) => {
    call { 
         controllers_AuthController_anywayCheck10_invoker.call(play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).getControllerInstance(classOf[controllers.AuthController]).anywayCheck())
@@ -218,7 +218,7 @@ case controllers_AuthController_anywayCheck10_route(params) => {
 }
         
 
-// @LINE:36
+// @LINE:34
 case controllers_AuthController_publicAccessCheck11_route(params) => {
    call { 
         controllers_AuthController_publicAccessCheck11_invoker.call(play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).getControllerInstance(classOf[controllers.AuthController]).publicAccessCheck())
@@ -226,7 +226,7 @@ case controllers_AuthController_publicAccessCheck11_route(params) => {
 }
         
 
-// @LINE:42
+// @LINE:40
 case controllers_Assets_versioned12_route(params) => {
    call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
         controllers_Assets_versioned12_invoker.call(controllers.Assets.versioned(path, file))

@@ -17,12 +17,14 @@ import com.pencil.application.services.HelloService;
 import models.AuthToken;
 
 import javax.inject.Inject;
+
 import play.mvc.Controller;
 import play.mvc.Http.Context;
 import play.mvc.Result;
 import security.HttpSessionSecurityContextRepository;
 import views.html.*;
 
+@EnableSessionTimeout
 @SecureAnnotation(unauthorizedOnAccessDenied=true)
 public class AuthController extends Controller	{
 
@@ -125,6 +127,5 @@ public class AuthController extends Controller	{
         return redirect(routes.AuthController.showLogin());
     }
 
-	
 	
 }

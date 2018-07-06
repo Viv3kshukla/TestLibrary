@@ -15,8 +15,6 @@ GET       /secureCheck          @controllers.SecondController.index()
 GET       /formCheck             @controllers.AuthController.showLogin()
 
 
-
-
 GET       /welcomePage          @controllers.AuthController.welcomePage()
 
 

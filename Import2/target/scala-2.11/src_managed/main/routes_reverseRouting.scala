@@ -1,6 +1,6 @@
 // @SOURCE:/home/vivek/STSProjectsImports/Import2/Import2/conf/routes
-// @HASH:1aee9635f523ac8524d7ca0f62b67f70c366c1ae
-// @DATE:Tue Jul 03 12:19:53 IST 2018
+// @HASH:80aeb6b78ad71fa3639d2f60adf63f94c5384540
+// @DATE:Thu Jul 05 13:34:38 IST 2018
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -14,13 +14,13 @@ import _root_.controllers.Assets.Asset
 import Router.queryString
 
 
-// @LINE:42
-// @LINE:36
-// @LINE:33
-// @LINE:30
-// @LINE:27
-// @LINE:24
-// @LINE:20
+// @LINE:40
+// @LINE:34
+// @LINE:31
+// @LINE:28
+// @LINE:25
+// @LINE:22
+// @LINE:18
 // @LINE:15
 // @LINE:12
 // @LINE:9
@@ -29,11 +29,11 @@ import Router.queryString
 // @LINE:2
 package controllers {
 
-// @LINE:42
+// @LINE:40
 class ReverseAssets {
 
 
-// @LINE:42
+// @LINE:40
 def versioned(file:Asset): Call = {
    implicit val _rrc = new ReverseRouteContext(Map(("path", "/public")))
    Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[PathBindable[Asset]].unbind("file", file))
@@ -85,45 +85,45 @@ def index(): Call = {
 }
                           
 
-// @LINE:36
-// @LINE:33
-// @LINE:30
-// @LINE:27
-// @LINE:24
-// @LINE:20
+// @LINE:34
+// @LINE:31
+// @LINE:28
+// @LINE:25
+// @LINE:22
+// @LINE:18
 // @LINE:15
 class ReverseAuthController {
 
 
-// @LINE:36
+// @LINE:34
 def publicAccessCheck(): Call = {
    import ReverseRouteContext.empty
    Call("GET", _prefix + { _defaultPrefix } + "publicAccessCheck")
 }
                         
 
-// @LINE:33
+// @LINE:31
 def anywayCheck(): Call = {
    import ReverseRouteContext.empty
    Call("GET", _prefix + { _defaultPrefix } + "anyway")
 }
                         
 
-// @LINE:30
+// @LINE:28
 def serviceCheck(): Call = {
    import ReverseRouteContext.empty
    Call("GET", _prefix + { _defaultPrefix } + "greet")
 }
                         
 
-// @LINE:27
+// @LINE:25
 def logout(): Call = {
    import ReverseRouteContext.empty
    Call("GET", _prefix + { _defaultPrefix } + "logout")
 }
                         
 
-// @LINE:20
+// @LINE:18
 def welcomePage(): Call = {
    import ReverseRouteContext.empty
    Call("GET", _prefix + { _defaultPrefix } + "welcomePage")
@@ -137,7 +137,7 @@ def showLogin(): Call = {
 }
                         
 
-// @LINE:24
+// @LINE:22
 def index(): Call = {
    import ReverseRouteContext.empty
    Call("GET", _prefix + { _defaultPrefix } + "indexCheck")
@@ -172,13 +172,13 @@ def verboseAnnotationIndex(): Call = {
                   
 
 
-// @LINE:42
-// @LINE:36
-// @LINE:33
-// @LINE:30
-// @LINE:27
-// @LINE:24
-// @LINE:20
+// @LINE:40
+// @LINE:34
+// @LINE:31
+// @LINE:28
+// @LINE:25
+// @LINE:22
+// @LINE:18
 // @LINE:15
 // @LINE:12
 // @LINE:9
@@ -188,11 +188,11 @@ def verboseAnnotationIndex(): Call = {
 package controllers.javascript {
 import ReverseRouteContext.empty
 
-// @LINE:42
+// @LINE:40
 class ReverseAssets {
 
 
-// @LINE:42
+// @LINE:40
 def versioned : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Assets.versioned",
    """
@@ -260,17 +260,17 @@ def index : JavascriptReverseRoute = JavascriptReverseRoute(
 }
               
 
-// @LINE:36
-// @LINE:33
-// @LINE:30
-// @LINE:27
-// @LINE:24
-// @LINE:20
+// @LINE:34
+// @LINE:31
+// @LINE:28
+// @LINE:25
+// @LINE:22
+// @LINE:18
 // @LINE:15
 class ReverseAuthController {
 
 
-// @LINE:36
+// @LINE:34
 def publicAccessCheck : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.AuthController.publicAccessCheck",
    """
@@ -281,7 +281,7 @@ def publicAccessCheck : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:33
+// @LINE:31
 def anywayCheck : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.AuthController.anywayCheck",
    """
@@ -292,7 +292,7 @@ def anywayCheck : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:30
+// @LINE:28
 def serviceCheck : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.AuthController.serviceCheck",
    """
@@ -303,7 +303,7 @@ def serviceCheck : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:27
+// @LINE:25
 def logout : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.AuthController.logout",
    """
@@ -314,7 +314,7 @@ def logout : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:20
+// @LINE:18
 def welcomePage : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.AuthController.welcomePage",
    """
@@ -336,7 +336,7 @@ def showLogin : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:24
+// @LINE:22
 def index : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.AuthController.index",
    """
@@ -383,13 +383,13 @@ def verboseAnnotationIndex : JavascriptReverseRoute = JavascriptReverseRoute(
         
 
 
-// @LINE:42
-// @LINE:36
-// @LINE:33
-// @LINE:30
-// @LINE:27
-// @LINE:24
-// @LINE:20
+// @LINE:40
+// @LINE:34
+// @LINE:31
+// @LINE:28
+// @LINE:25
+// @LINE:22
+// @LINE:18
 // @LINE:15
 // @LINE:12
 // @LINE:9
@@ -399,11 +399,11 @@ def verboseAnnotationIndex : JavascriptReverseRoute = JavascriptReverseRoute(
 package controllers.ref {
 
 
-// @LINE:42
+// @LINE:40
 class ReverseAssets {
 
 
-// @LINE:42
+// @LINE:40
 def versioned(path:String, file:Asset): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Assets.versioned(path, file), HandlerDef(this.getClass.getClassLoader, "", "controllers.Assets", "versioned", Seq(classOf[String], classOf[Asset]), "GET", """ Use `Assets.versioned` to enable Play 2.3's Asset Fingerprinting""", _prefix + """assets/$file<.+>""")
 )
@@ -451,41 +451,41 @@ def index(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 }
                           
 
-// @LINE:36
-// @LINE:33
-// @LINE:30
-// @LINE:27
-// @LINE:24
-// @LINE:20
+// @LINE:34
+// @LINE:31
+// @LINE:28
+// @LINE:25
+// @LINE:22
+// @LINE:18
 // @LINE:15
 class ReverseAuthController {
 
 
-// @LINE:36
+// @LINE:34
 def publicAccessCheck(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).getControllerInstance(classOf[controllers.AuthController]).publicAccessCheck(), HandlerDef(this.getClass.getClassLoader, "", "controllers.AuthController", "publicAccessCheck", Seq(), "GET", """""", _prefix + """publicAccessCheck""")
 )
                       
 
-// @LINE:33
+// @LINE:31
 def anywayCheck(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).getControllerInstance(classOf[controllers.AuthController]).anywayCheck(), HandlerDef(this.getClass.getClassLoader, "", "controllers.AuthController", "anywayCheck", Seq(), "GET", """""", _prefix + """anyway""")
 )
                       
 
-// @LINE:30
+// @LINE:28
 def serviceCheck(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).getControllerInstance(classOf[controllers.AuthController]).serviceCheck(), HandlerDef(this.getClass.getClassLoader, "", "controllers.AuthController", "serviceCheck", Seq(), "GET", """""", _prefix + """greet""")
 )
                       
 
-// @LINE:27
+// @LINE:25
 def logout(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).getControllerInstance(classOf[controllers.AuthController]).logout(), HandlerDef(this.getClass.getClassLoader, "", "controllers.AuthController", "logout", Seq(), "GET", """""", _prefix + """logout""")
 )
                       
 
-// @LINE:20
+// @LINE:18
 def welcomePage(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).getControllerInstance(classOf[controllers.AuthController]).welcomePage(), HandlerDef(this.getClass.getClassLoader, "", "controllers.AuthController", "welcomePage", Seq(), "GET", """""", _prefix + """welcomePage""")
 )
@@ -497,7 +497,7 @@ def showLogin(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 )
                       
 
-// @LINE:24
+// @LINE:22
 def index(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    play.api.Play.maybeApplication.map(_.global).getOrElse(play.api.DefaultGlobal).getControllerInstance(classOf[controllers.AuthController]).index(), HandlerDef(this.getClass.getClassLoader, "", "controllers.AuthController", "index", Seq(), "GET", """""", _prefix + """indexCheck""")
 )

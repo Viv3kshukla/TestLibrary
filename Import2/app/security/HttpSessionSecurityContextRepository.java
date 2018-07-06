@@ -74,12 +74,12 @@ public class HttpSessionSecurityContextRepository implements SecurityContextRepo
                 ? createAnonymousAuthenticationToken()
                 : new UsernamePasswordAuthenticationToken(user, user.getPassword(), user.getAuthorities());
         
-        System.out.println("12.authentication : "+authentication);
+        System.out.println("38.authentication : "+authentication);
         securityContext.setAuthentication(authentication);
         context.request().setUsername(authentication.getName());
-        System.out.println("13.authentication.getName() : "+authentication.getName()); 
+        System.out.println("39.authentication.getName() : "+authentication.getName()); 
         context.args.put(SECURITY_EXPRESSION_OPERATIONS_KEY, securityExpressionOperationsSupplier.get());
-        System.out.println("14.context : "+context);
+        System.out.println("40.context : "+context);
         return securityContext;
     }
 

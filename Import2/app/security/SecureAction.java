@@ -1,6 +1,8 @@
 package security;
 
 
+import java.util.Map;
+
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.AuthenticationTrustResolver;
 import org.springframework.security.authentication.AuthenticationTrustResolverImpl;
@@ -18,19 +20,24 @@ import security.HttpSessionSecurityContextRepository;
 public class SecureAction extends Action<SecureAnnotation> {
 
 	private final HttpSessionSecurityContextRepository securityContextRepository;
-//    private final Call redirectRoute;
+    private final Call redirectRoute;
 
     private AuthenticationTrustResolver authenticationTrustResolver = new AuthenticationTrustResolverImpl();
 
-	public SecureAction(final HttpSessionSecurityContextRepository securityContextRepository) {
+	public SecureAction(final HttpSessionSecurityContextRepository securityContextRepository , final Call redirectRoute) {
 		
 		this.securityContextRepository = securityContextRepository;
-//        this.redirectRoute = redirectRoute;
+        this.redirectRoute = redirectRoute;
 	}
 	
     public F.Promise<Result> call(Http.Context ctx) throws Throwable {
-    	
+ 
     	System.out.println("\n\n ----- back at SecureAction ----- \n\n");
+    	
+//    	for (Map.Entry<String, String> entry : hp.entrySet()) {
+//		    System.out.println(entry.getKey() + " = " + entry.getValue());
+//		}
+//    	
     	
 		try {
 			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -61,8 +68,8 @@ public class SecureAction extends Action<SecureAnnotation> {
     		boolean anonymous =authenticationTrustResolver.isAnonymous(SecurityContextHolder.getContext().getAuthentication());
     		boolean redirect= (anonymous && !this.configuration.unauthorizedOnAccessDenied());
     		System.out.println("25.AccessDeniedException : "+e);
-//    		
-//    		final Result promise = redirect(routes.AuthController.showLogin());
+    		
+//    		final Result promise = redirect(this.redirectRoute);
     		
     		final Result promise =unauthorized("You are not authorized ");
     		
